@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>关机/重启/定时</title>
+	<link rel="shortcut icon " type="images/x-icon" href="/static/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="http://192.168.0.111/bootstrap/css/bootstrap.min.css">
+	<style>
+		.container{
+			padding:10%;
+		}
+		.bb{
+			width: ;
+			margin: 5%;
+		}
+	</style>
+	<script src="http://192.168.0.111/jquery.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="http://192.168.0.111/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script type="text/javascript" charset="utf-8">
+		jQuery(document).ready(function($){
+			$('#settime').click(function(){
+				var m = $('#time').val();
+				window.location.href = '/shutdownsettime/'+m;
+			});
+			$('#shutdown').click(function(){
+				window.location.href = '/shutdownnow';
+			});
+			$('#reboot').click(function(){
+				window.location.href = '/reboot';
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+		<button type="button" class="btn btn-danger bb"  data-toggle="modal" data-target="#shutdownModal">&nbsp;关&nbsp;&nbsp;&nbsp;&nbsp;机&nbsp;</button>
+		<button type="button" class="btn btn-warning bb" data-toggle="modal" data-target="#rebootModal">&nbsp;重&nbsp;&nbsp;&nbsp;&nbsp;启&nbsp;</button>
+		<button type="button" class="btn btn-primary bb" data-toggle="modal" data-target="#myModal">定时关机</button>
+		<a href="/cancle"><button class="btn btn-success bb">取消计划</button></a>
+
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">设置关机时间</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="input-group">
+							<input type="text" id='time' class="form-control" placeholder="设置关机时间" >
+							<span class="input-group-addon">分钟</span>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id='settime'>设置时间</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="shutdownModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">确定要关机吗</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<!-- <div class="modal-body">
+						<div class="input-group">
+							<input type="text" id='time' class="form-control" placeholder="设置关机时间" aria-describedby="basic-addon2">
+							<span class="input-group-addon" id="basic-addon2">分钟</span>
+						</div>
+					</div> -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id='shutdownnow'>确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="rebootModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">确定要重启吗</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<!-- <div class="modal-body">
+						<div class="input-group">
+							<input type="text" id='time' class="form-control" placeholder="设置关机时间" aria-describedby="basic-addon2">
+							<span class="input-group-addon" id="basic-addon2">分钟</span>
+						</div>
+					</div> -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary" id='reboot'>确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
